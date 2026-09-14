@@ -2,26 +2,54 @@
   "version": 2,
   "builds": [
     {
-      "src": "website/server.js",
+      "src": "server.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/css/(.*)",
-      "dest": "/website/css/$1"
+      "dest": "/css/$1"
     },
     {
       "src": "/js/(.*)",
-      "dest": "/website/js/$1"
+      "dest": "/js/$1"
     },
     {
       "src": "/assets/(.*)",
-      "dest": "/website/assets/$1"
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "server.js"
+    },
+    {
+      "src": "/shop/kitchen-garden-guide",
+      "dest": "/shop/kitchen-garden-guide.html"
+    },
+    {
+      "src": "/shop",
+      "dest": "/shop/index.html"
+    },
+    {
+      "src": "/donate",
+      "dest": "/donate/index.html"
+    },
+    {
+      "src": "/donate/success",
+      "dest": "/donate/success.html"
+    },
+    {
+      "src": "/purchase/success",
+      "dest": "/purchase/success.html"
+    },
+    {
+      "src": "/purchase/cancelled",
+      "dest": "/purchase/cancelled.html"
     },
     {
       "src": "/(.*)",
-      "dest": "website/server.js"
+      "dest": "server.js"
     }
   ]
 }
