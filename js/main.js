@@ -23,17 +23,15 @@ function initLiveHoursStatus() {
   if (!statusBannerText) return;
 
   const now = new Date();
-  const day = now.getDay(); // 0 is Sunday
   const hour = now.getHours();
 
-  // Farm Hours: Wed - Sun (10 AM to 6 PM)
-  const isOpenDay = day >= 3 || day === 0;
-  const isOpenHour = hour >= 10 && hour < 18;
+  // Farm Hours: Mon - Sun (9 AM to 7 PM)
+  const isOpenHour = hour >= 9 && hour < 19;
 
-  if (isOpenDay && isOpenHour) {
-    statusBannerText.innerHTML = '<span class="status-dot"></span> <strong>OPEN TODAY</strong> (10 AM – 6 PM) • Visit Us at 3316 168 St, Surrey';
+  if (isOpenHour) {
+    statusBannerText.innerHTML = '<span class="status-dot"></span> <strong>OPEN TODAY</strong> (9 AM – 7 PM) • Visit Us at 3316 168 St, Surrey';
   } else {
-    statusBannerText.innerHTML = '<span class="status-dot" style="background:#E74C3C;box-shadow:0 0 8px #E74C3C;"></span> <strong>FARM STORE CLOSED NOW</strong> • Reopens Wed–Sun 10 AM – 6 PM';
+    statusBannerText.innerHTML = '<span class="status-dot" style="background:#E74C3C;box-shadow:0 0 8px #E74C3C;"></span> <strong>FARM STORE CLOSED NOW</strong> • Reopens Daily 9 AM – 7 PM';
   }
 }
 
