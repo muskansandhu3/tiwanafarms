@@ -358,11 +358,16 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`==================================================`);
-  console.log(`TIWANA FARMS E-COMMERCE SERVER RUNNING`);
-  console.log(`Port: http://localhost:${PORT}`);
-  console.log(`Stripe Mode: ${stripe ? 'LIVE/TEST KEYS CONNECTED' : 'DEMO FALLBACK MODE'}`);
-  console.log(`Protected Storage: /private/Tiwana_Farms_Kitchen_Garden_Guide.pdf`);
-  console.log(`==================================================`);
-});
+if (process.env.NODE_ENV !== 'test' && !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`==================================================`);
+    console.log(`TIWANA FARMS E-COMMERCE SERVER RUNNING`);
+    console.log(`Port: http://localhost:${PORT}`);
+    console.log(`Stripe Mode: ${stripe ? 'LIVE/TEST KEYS CONNECTED' : 'DEMO FALLBACK MODE'}`);
+    console.log(`Protected Storage: /private/Tiwana_Farms_Kitchen_Garden_Guide.pdf`);
+    console.log(`==================================================`);
+  });
+}
+
+module.exports = app;
+
