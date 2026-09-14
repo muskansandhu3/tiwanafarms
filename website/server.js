@@ -350,8 +350,12 @@ app.get('/purchase/cancelled', (req, res) => {
   res.sendFile(path.join(__dirname, 'purchase', 'cancelled.html'));
 });
 
-// Serve static directory files
-app.use(express.static(__dirname));
+// Serve static directories explicitly
+app.use('/css', express.static(path.join(__dirname, 'css')));
+app.use('/js', express.static(path.join(__dirname, 'js')));
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.resolve(__dirname)));
 
 // Fallback to index.html
 app.get('*', (req, res) => {
